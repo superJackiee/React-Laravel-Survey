@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="false"
+         convertWarningsToExceptions="false"
+         processIsolation="false"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         stopOnFailure="true">
+    <testsuites>
+        <testsuite name="Feature Tests">
+            <file>./tests/Feature/HomeTest.php</file>
+            <file>./tests/Feature/AuthTest.php</file>
+            <file>./tests/Feature/DashboardTest.php</file>
+            <file>./tests/Feature/SurveyTest.php</file>
+            <file>./tests/Feature/QuestionTest.php</file>
+            <file>./tests/Feature/PublicSurveyTest.php</file>
+            <file>./tests/Feature/APITest.php</file>
+            <file>./tests/Feature/ResourceTest.php</file>
+            <file>./tests/Feature/ServerSentEventTest.php</file>
+            <file>./tests/Feature/SetupTest.php</file>
+        </testsuite>
+
+        <testsuite name="Unit Tests">
+            <file>./tests/Unit/HelperTest.php</file>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+            <exclude>
+                <directory>./build</directory>
+                <directory>./composer</directory>
+                <directory>./tests</directory>
+                <directory>./vendor</directory>
+                <directory>./.git</directory>
+                <directory>./.circleci</directory>
+                <directory>./config</directory>
+                <directory>./database</directory>
+                <directory>./docker</directory>
+                <directory>./node_modules</directory>
+                <directory>./public</directory>
+                <directory>./resources</directory>
+                <directory>./routes</directory>
+                <directory>./storage</directory>
+                <directory>./app/Exceptions</directory>
+                <directory>./app/Console</directory>
+                <directory>./app/Providers</directory>
+                <file>./server.php</file>
+                <file>./composer-setup.php</file>
+                <file>./app/Http/Kernel.php</file>
+                <file>./app/Http/Middleware/TrimStrings.php</file>
+                <file>./app/Http/Middleware/VerifyCsrfToken.php</file>
+                <file>./app/Http/Middleware/EncryptCookies.php</file>
+                <file>./app/Http/Controllers/Controller.php</file>
+                <file>./app/Http/Controllers/Auth/ForgotPasswordController.php</file>
+                <file>./app/Http/Controllers/Auth/ResetPasswordController.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DB_CONNECTION" value="sqlite_testing"/>
+    </php>
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="coverage-html" target="build/logs/html"/>
+        <log type="testdox-html" target="build/logs/testdox.html"/>
+    </logging>
+</phpunit>
